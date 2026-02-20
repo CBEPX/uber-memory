@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "hooks": {
+    "sessionStart": [
+      {
+        "command": "./scripts/memory_session_start.sh",
+        "matcher": ".*"
+      }
+    ]
+  }
+}

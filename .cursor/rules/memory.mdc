@@ -1,0 +1,13 @@
+---
+description: Use project memory (Qdrant + Memgraph) at task start and when saving facts
+alwaysApply: true
+---
+
+# Project Memory
+
+- At the **start of a task** about this repo or codebase, call MCP **memory_search** with the user request or task description and use the results (and their `created_at`) in your answer.
+- When you **learn or decide** something that should persist (decisions, conventions, gotchas), call **memory_upsert** and, if relevant, **graph_add_fact** or **graph_query**.
+- If **.cursor/memory_context.md** exists, treat it as a session-start memory summary; for deeper search use **memory_search**.
+- All memory payloads include **created_at**; use it to prefer recent knowledge and to cite when a fact was recorded.
+
+See **AGENTS.md** and **skill/uber-memory/SKILL.md** for full instructions.

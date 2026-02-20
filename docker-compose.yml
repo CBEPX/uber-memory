@@ -1,0 +1,29 @@
+# Qdrant and Memgraph on 127.0.0.1 for Uber-Memory
+# Containers restart automatically (e.g. after host reboot when Docker is running).
+# Run: docker compose up -d  or  make up
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
+    volumes:
+      - qdrant_storage:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__GRPC_PORT=6334
+
+  memgraph:
+    image: memgraph/memgraph-mage:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:7687:7687"
+      - "127.0.0.1:7444:7444"
+    volumes:
+      - memgraph_data:/var/lib/memgraph
+    command: ["memgraph", "--log-level=WARNING"]
+
+volumes:
+  qdrant_storage: {}
+  memgraph_data: {}

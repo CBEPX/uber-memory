@@ -1,0 +1,19 @@
+# Uber-Memory config schema (reference). Runtime values come from .env; see .env.example.
+# Qdrant collection + Memgraph. BM25 (sparse) and semantic (dense). All points/nodes include created_at.
+
+qdrant:
+  url: "http://127.0.0.1:6333"
+  collection_name: "project_memory"
+  dense:
+    size: 384          # match embedding model (e.g. sentence-transformers/all-MiniLM-L6-v2)
+    distance: "Cosine"
+  sparse:
+    name: "sparse"
+    modifier: "IDF"     # BM25-style weighting
+
+memgraph:
+  bolt_uri: "bolt://127.0.0.1:7687"
+
+# Payload/graph node fields that always include:
+# - created_at (number Unix ms or string ISO8601)
+# Optional: entity_id, source, project_id for filtering and graph linkage.

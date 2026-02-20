@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "uber-memory": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--project",
+        "/absolute/path/to/uber-memory",
+        "python",
+        "-m",
+        "mcp_server"
+      ],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "QDRANT_URL": "http://127.0.0.1:6333",
+        "MEMGRAPH_BOLT_URI": "bolt://127.0.0.1:7687",
+        "MEMORY_RESOURCE_MAX_CHARS": "40000"
+      }
+    }
+  }
+}

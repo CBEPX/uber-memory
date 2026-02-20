@@ -1,0 +1,12 @@
+.env
+.venv
+venv
+__pycache__
+*.pyc
+.cursor/memory_context.md
+.cursor/mcp.json
+*.egg-info
+.pytest_cache
+.mypy_cache
+.DS_Store
+
